@@ -33,7 +33,7 @@ services:
     container_name: es_ojt_kibana
     image: docker.elastic.co/kibana/kibana:7.16.3
     environment:
-      elasticsearch.hosts: "http://es-ojt-elasticsearch:14280"
+      elasticsearch.hosts: "http://es-ojt-elasticsearch:9200"
       elasticsearch.username: es_ojt
     ports:
       - "14282:5601"
