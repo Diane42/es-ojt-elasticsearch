@@ -14,8 +14,8 @@ services:
       node.name: es01
       cluster.name: es-docker-cluster
       discovery.type: single-node
-      bootstrap.memory_lock: true
-      xpack.security.enabled: false
+      bootstrap.memory_lock: "true"
+      xpack.security.enabled: "false"
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
     volumes:
       - /mnt/disks/data/qa42/esojt:/usr/share/elasticsearch/data
