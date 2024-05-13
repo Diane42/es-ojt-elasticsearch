@@ -30,7 +30,7 @@ services:
       - es-ojt
 
   es-ojt-kibana:
-    container_name: es_ojt_kibana
+    container_name: es-ojt-kibana
     image: docker.elastic.co/kibana/kibana:7.16.3
     environment:
       ELASTICSEARCH_HOSTS: "http://es-ojt-elasticsearch:9200"
