@@ -1,11 +1,11 @@
 version: "3.8"
 
 networks:
-  elastic:
+  es-ojt-elastic:
     driver: bridge
 
 services:
-  elasticsearch:
+  es-ojt-elasticsearch:
     container_name: es_ojt_elasticsearch
     build:
       context: ./elasticsearch
@@ -17,23 +17,27 @@ services:
       bootstrap.memory_lock: "true"
       xpack.security.enabled: "false"
       ES_JAVA_OPTS: "-Xmx2g -Xms2g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     volumes:
       - /mnt/disks/data/qa42/esojt:/usr/share/elasticsearch/data
     ports:
       - "14280:9200"
       - "14281:9300"
     networks:
-      - elastic
+      - es-ojt-elastic
 
-  kibana:
+  es-ojt-kibana:
     container_name: es_ojt_kibana
     image: docker.elastic.co/kibana/kibana:7.16.3
     environment:
-      elasticsearch.hosts: "http://elasticsearch:14280"
+      elasticsearch.hosts: "http://es-ojt-elasticsearch:14280"
       elasticsearch.username: es_ojt
     ports:
       - "14282:5601"
     networks:
       - elastic
     depends_on:
-      - elasticsearch
+      - es-ojt-elastic
