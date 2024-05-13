@@ -1,7 +1,7 @@
 version: "3.8"
 
 networks:
-  es-ojt-elastic:
+  es-ojt:
     driver: bridge
 
 services:
@@ -27,7 +27,7 @@ services:
       - "14280:9200"
       - "14281:9300"
     networks:
-      - es-ojt-elastic
+      - es-ojt
 
   es-ojt-kibana:
     container_name: es_ojt_kibana
@@ -38,6 +38,6 @@ services:
     ports:
       - "14282:5601"
     networks:
-      - elastic
+      - es-ojt
     depends_on:
-      - es-ojt-elastic
+      - es-ojt-elasticsearch
