@@ -22,7 +22,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /mnt/disks/data/qa42/esojt:/usr/share/elasticsearch/data
+      - /mnt/disks/data/qa42/esojt/es/es_data:/usr/share/elasticsearch/data
     ports:
       - "14280:9200"
       - "14281:9300"
