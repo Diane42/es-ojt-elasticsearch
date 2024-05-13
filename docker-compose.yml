@@ -6,6 +6,7 @@ networks:
 
 services:
   es-ojt-elasticsearch:
+    user: "1000:1000"
     container_name: es_ojt_elasticsearch
     build:
       context: ./elasticsearch
