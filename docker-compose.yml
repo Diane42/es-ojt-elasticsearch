@@ -7,10 +7,10 @@ networks:
 services:
   es-ojt-elasticsearch:
     container_name: es-ojt-elasticsearch
-    #build:
-    #  context: ./elasticsearch
-    #  dockerfile: Dockerfile
-    image: es_es-ojt-elasticsearch:latest
+    build:
+      context: ./elasticsearch
+      dockerfile: Dockerfile
+    #image: es_es-ojt-elasticsearch:latest
     environment:
       node.name: es01
       cluster.name: es-docker-cluster
