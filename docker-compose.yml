@@ -7,23 +7,23 @@ networks:
 services:
   es-ojt-elasticsearch:
     container_name: es-ojt-elasticsearch
-    #build:
-    #  context: ./elasticsearch
-    #  dockerfile: Dockerfile
-    image: es_es-ojt-elasticsearch:latest
+    build:
+      context: ./elasticsearch
+      dockerfile: Dockerfile
+    #image: es_es-ojt-elasticsearch:latest
     environment:
       node.name: es01
       cluster.name: es-docker-cluster
       discovery.type: single-node
       bootstrap.memory_lock: "true"
       xpack.security.enabled: "false"
-      ES_JAVA_OPTS: "-Xmx2g -Xms2g"
+      ES_JAVA_OPTS: "-Xmx1g -Xms1g"
     ulimits:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-      - /mnt/disks/data/qa42/esojt/es/es_data:/usr/share/elasticsearch/data
+#    volumes:
+#      - /mnt/disks/data/qa42/esojt/es/es_data:/usr/share/elasticsearch/data
     ports:
       - "14280:9200"
     networks:
